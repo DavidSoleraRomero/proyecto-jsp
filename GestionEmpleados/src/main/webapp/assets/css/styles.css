@@ -1,0 +1,134 @@
+
+/* 
+ * Styles for multiple JSP files
+ * Author --> David Solera Romero
+ * Date   --> 29 - 04 - 2024
+ * This page only has educational purposes
+ */
+
+/* General */
+* {box-sizing: border-box !important;}
+
+/* Navbar position */
+.container .navbar {z-index: 20 !important;}
+
+/* Class for width */
+.w-perso {width: 57.5%;}
+.w-25-perso {width: 25%;}
+.w-30 {width: 30%;}
+.w-35 {width: 35%;}
+.w-40 {width: 40%;}
+.w-45 {width: 45%;}
+.w-50px {width: 50px;}
+
+/* Class for height */
+.h-100 {height: 100%;}
+
+/* Class for positioning from 0% to 100%, in 10% increments */
+/* Top */
+.top-0 { top: 0 !important; }
+.top-10 { top: 10% !important; }
+.top-20 { top: 20% !important; }
+.top-30 { top: 30% !important; }
+.top-35 { top: 35% !important; }
+.top-40 { top: 40% !important; }
+.top-43-4 { top: 43.4% !important; }
+.top-45 { top: 45% !important; }
+.top-46 { top: 46% !important; }
+.top-50 { top: 50% !important; }
+.top-60 { top: 60% !important; }
+.top-70 { top: 70% !important; }
+.top-80 { top: 80% !important; }
+.top-90 { top: 90% !important; }
+.top-100 { top: 100% !important; }
+
+/* Bottom */
+.bottom-0 { bottom: 0 !important; }
+.bottom-10 { bottom: 10% !important; }
+.bottom-20 { bottom: 20% !important; }
+.bottom-30 { bottom: 30% !important; }
+.bottom-40 { bottom: 40% !important; }
+.bottom-50 { bottom: 50% !important; }
+.bottom-60 { bottom: 60% !important; }
+.bottom-70 { bottom: 70% !important; }
+.bottom-80 { bottom: 80% !important; }
+.bottom-90 { bottom: 90% !important; }
+.bottom-100 { bottom: 100% !important; }
+
+/* Left */
+.left-0 { left: 0 !important; }
+.left-10 { left: 10% !important; }
+.left-20 { left: 20% !important; }
+.left-30 { left: 30% !important; }
+.left-40 { left: 40% !important; }
+.left-50 { left: 50% !important; }
+.left-60 { left: 60% !important; }
+.left-70 { left: 70% !important; }
+.left-80 { left: 80% !important; }
+.left-90 { left: 90% !important; }
+.left-100 { left: 100% !important; }
+
+/* Right */
+.right-0 { right: 0 !important; }
+.right-10 { right: 10% !important; }
+.right-20 { right: 20% !important; }
+.right-27 { right: 27% !important; }
+.right-27-5 { right: 27.5% !important; }
+.right-30 { right: 30% !important; }
+.right-40 { right: 40% !important; }
+.right-50 { right: 50% !important; }
+.right-60 { right: 60% !important; }
+.right-70 { right: 70% !important; }
+.right-80 { right: 80% !important; }
+.right-90 { right: 90% !important; }
+.right-100 { right: 100% !important; }
+
+/* Class for borders */
+.custom-border {border: 3px solid !important;}
+
+/* Class for hovers */
+.card-hover {transition: 1s;}
+.card-hover:hover {box-shadow:0 0 22.5px 0.35rem rgba(0, 0, 0, 0.85);}
+
+/* Class for alignment */
+.align-center {align-items: center;}
+
+/* Class for hovers */
+/* Navigation bar items hover */
+#gemp, #username {
+    transition: 0.90s;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    border-radius: 7.5%;}
+#gemp:hover, #username:hover {
+    background-color: rgba(191, 191, 191, 0.35) !important;
+    border-radius: 29% !important;
+    transition: 1.10s !important;}
+
+/* Fontawesome pincel edit icon hover */
+.fa-pencil-square-o {transition: 0.9s;}
+.fa-pencil-square-o:hover {color: rgb(134, 109, 12);}
+
+/* Fontawesome trash icon hover */ 
+.fa-trash-o {transition: 0.9s;}
+.fa-trash-o:hover {color: rgb(204, 28, 28);}
+
+/* Class that changes Bootstrap defaults colors on forms */ 
+.form-control:focus {
+    border-color:#1c1d1b !important;
+    box-shadow:0 0 0 .25rem rgba(26, 29, 26, 0.25) !important;}
+
+/* Media queries */
+@media (max-width: 1200px) { .top-43-4 {top: 41.95% !important;}}
+
+@media (max-width: 980px) { .top-43-4 {top: 41.05% !important;}}
+
+@media (max-width: 768px) { 
+    .w-perso {width: 100% !important;}
+    .w-25-perso {width: 100%;}}
+
+@media (max-width: 575px) {
+    #username {margin-right: 9px;}
+    #gemp {margin-left: 7px !important;}}
+
+@media (max-width: 470px) { #userlogged {display: none;} }
