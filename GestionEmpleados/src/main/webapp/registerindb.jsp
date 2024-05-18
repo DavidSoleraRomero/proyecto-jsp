@@ -16,29 +16,35 @@
         User loggedUser = (User) session.getAttribute("user");
         if (loggedUser != null) 
             response.sendRedirect("home.jsp");
+        else {
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
         if (username == null || password == null)
             response.sendRedirect("register.jsp");
+        else {
 
-        String accessUser = "davidsr";
-        String accessPassword = "123456789";
-        String accessDbUrl = "jdbc:mysql://localhost:3306/empresa";
-        ConnectionPool cp = new ConnectionPool(accessDbUrl, accessUser, accessPassword);
-        UserService us = new UserService(cp.getConnection());
+            String accessUser = "davidsr";
+            String accessPassword = "123456789";
+            String accessDbUrl = "jdbc:mysql://localhost:3306/empresa";
+            ConnectionPool cp = new ConnectionPool(accessDbUrl, accessUser, accessPassword);
+            UserService us = new UserService(cp.getConnection());
 
-        try {
+            try {
 
-            us.insert(new User(0, username, password));
-            session.setAttribute("error", null);
-            response.sendRedirect("login.jsp");
+                us.insert(new User(0, username, password));
+                session.setAttribute("error", null);
+                response.sendRedirect("login.jsp");
 
-        } catch (Exception e) {
+            } catch (Exception e) {
 
-            session.setAttribute("error", "<p class=\"text-center text-danger\">El usuario introducido ya existe<br>Ingrese uno diferente</p>");
-            response.sendRedirect("register.jsp");
+                session.setAttribute("error", "<p class=\"text-center text-danger\">El usuario introducido ya existe<br>Ingrese uno diferente</p>");
+                response.sendRedirect("register.jsp");
+
+            }
+
+        }
 
         }
 

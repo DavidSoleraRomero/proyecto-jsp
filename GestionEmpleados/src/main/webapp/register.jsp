@@ -25,7 +25,7 @@
         // Obtiene error de validación de credenciales
         String error = (request.getParameter("error") != null) ? request.getParameter("error") : "";
         
-        // Obtiene error de usuario existente
+        // Obtiene error de usuario existente si no hay error de credenciales
         if (error.equals(""))
             error = String.valueOf((session.getAttribute("error") != null) ? session.getAttribute("error") : error);
 
@@ -88,6 +88,5 @@
                 window.location.href = `register.jsp?error=${encodedError}`;
             }
         });
-    
     </script>
 </body>

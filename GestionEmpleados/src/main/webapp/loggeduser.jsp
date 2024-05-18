@@ -39,7 +39,12 @@
         String eyeValue = (passwordType == null || passwordType.equals("password")) ? "view" : "hide";
         String eyeStyle = (eyeValue.equals("view")) ? "fa fa-eye" : "fa fa-eye-slash";
 
-        String error = String.valueOf((session.getAttribute("error") != null) 
+        // Obtiene error de validación de credenciales
+        String error = (request.getParameter("error") != null) ? request.getParameter("error") : "";
+        
+        // Obtiene error de usuario existente si no hay error de credenciales
+        if (error.equals(""))
+            error = String.valueOf((session.getAttribute("error") != null) 
                                         ? session.getAttribute("error") : "<p class=\"invisible m-0 mt-1 p-0\">invisible</p>");
         String username = (loggedUser != null) ? loggedUser.getUsername() : "";
         String password = (loggedUser != null) ? loggedUser.getPassword() : "";
@@ -57,7 +62,6 @@
                     </a>
                 </div>
                 <a class="nav-link d-flex align-items-center text-dark invisible p-0" href="loggeduser.jsp">
-                    <%= username %>
                     <img class="w-50px" src="./assets/img/UserIcon.png" alt="User's icon">
                 </a>
             </div>
@@ -72,17 +76,17 @@
                     <p><i>No disponible actualmente</i></p>
                 </div>
                 <div class="col-md-6 col-12 d-flex align-items-center justify-content-center flex-column position-relative">
-                    <form method="POST" class="w-50 d-flex justify-content-center align-items-center flex-column" action="modifyloggeduser.jsp">
+                    <form method="POST" id="modifyCredentialsForm" class="w-50 d-flex justify-content-center align-items-center flex-column">
                         <div class="mt-3 w-100">
                             <label for="username">Usuario</label>
-                            <input type="text" required class="form-control" name="username" value="<%= username %>">
+                            <input type="text" required class="form-control" name="username" id="username" value="<%= username %>">
                         </div>
                         <div class="mt-3 w-100">
                             <label for="password">Contraseña</label>
-                            <input type="<%= passwordType %>" required class="form-control" name="password" value="<%= password %>">
+                            <input type="<%= passwordType %>" required class="form-control" name="password" id="password" value="<%= password %>">
                         </div>
                         <%= error %>
-                        <button class="btn btn-dark mt-1">MODIFICAR</button>
+                        <button class="btn btn-dark mt-1" type="submit">MODIFICAR</button>
                     </form>
                     <form method="POST" class="w-100 d-flex justify-content-center align-items-center flex-column" action="logout.jsp">
                         <button class="btn btn-danger mt-2">CERRAR SESIÓN</button>
@@ -108,5 +112,37 @@
         </div>
 
     </div>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        document.getElementById('modifyCredentialsForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            const usernamePattern = /^[a-zA-Z0-9]{4,15}$/;
+            const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){6,}$/;
+
+            let valid = true;
+            let message = '';
+
+            if (!usernamePattern.test(username)) {
+                valid = false;
+                message += '<p class=\"text-center text-danger m-0 mt-1 p-0\">Formato erroneo</p>';
+            }
+
+            if (!passwordPattern.test(password) && valid) {
+                valid = false;
+                message += '<p class=\"text-center text-danger m-0 mt-1 p-0\">Formato erroneo</p>';
+            }
+
+            if (valid) {
+                const encodedUsername = encodeURIComponent(username);
+                const encodedPassword = encodeURIComponent(password);
+                window.location.href = `modifyloggeduser.jsp?username=${encodedUsername}&password=${encodedPassword}`;
+            } else {
+                const encodedError = encodeURIComponent(message);
+                window.location.href = `loggeduser.jsp?error=${encodedError}`;
+            }
+        });
+    </script>
 </body>

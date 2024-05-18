@@ -21,6 +21,7 @@
         User loggedUser = (User) session.getAttribute("user");
         if (loggedUser == null) 
             response.sendRedirect("login.jsp");
+        else {
 
         String accessUser = "davidsr";
         String accessPassword = "123456789";
@@ -43,10 +44,12 @@
         if (affectedRows == 1) {
             session.setAttribute("error", null);
             session.setAttribute("user", modifiedUser);
-        } else 
+            response.sendRedirect("loggeduser.jsp");
+        } else {
             session.setAttribute("error", "<p class=\"text-center text-danger\">Se produjo un error modificando</p>");
+            response.sendRedirect("loggeduser.jsp");
+        }
 
-        response.sendRedirect("loggeduser.jsp");
 
         } catch (Exception e) {
 
@@ -55,7 +58,8 @@
 
         }
 
+        }
+
     %>
 
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
