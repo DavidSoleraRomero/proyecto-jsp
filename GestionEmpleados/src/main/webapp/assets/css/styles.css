@@ -95,12 +95,12 @@
 
 /* Class for hovers */
 /* Navigation bar items hover */
-#gemp, #username {
+#gemp, #nav-username {
     transition: 0.90s;
     border-bottom: 1px solid black;
     border-top: 1px solid black;
     border-radius: 7.5%;}
-#gemp:hover, #username:hover {
+#gemp:hover, #nav-username:hover {
     background-color: rgba(191, 191, 191, 0.35) !important;
     border-radius: 29% !important;
     transition: 1.10s !important;}
@@ -128,7 +128,7 @@
     .w-25-perso {width: 100%;}}
 
 @media (max-width: 575px) {
-    #username {margin-right: 9px;}
+    #nav-username {margin-right: 9px;}
     #gemp {margin-left: 7px !important;}}
 
 @media (max-width: 470px) { #userlogged {display: none;} }

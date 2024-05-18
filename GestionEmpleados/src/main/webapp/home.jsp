@@ -58,7 +58,7 @@
 
     <div class="container p-0">
 
-        <nav class="navbar bg-body-tertiary px-0 position-sticky top-0 bg-light border-bottom border-dark">
+        <nav class="navbar bg-body-tertiary px-0 position-sticky top-0 bg-white border-bottom border-dark">
             <div class="container-fluid px-0 d-flex justify-content-between align-items-center">
                 <div>
                     <a id="gemp" class="navbar-brand d-flex align-items-center text-dark m-0" href="home.jsp">
@@ -66,7 +66,7 @@
                         <p class="m-0 pr-2">Gestión Empleados</p>
                     </a>
                 </div>
-                <a id="username" class="nav-link d-flex align-items-center text-dark p-0" href="loggeduser.jsp">
+                <a id="nav-username" class="nav-link d-flex align-items-center text-dark p-0" href="loggeduser.jsp">
                     <%= username %>
                     <img class="w-50px border-end border-dark" src="./assets/img/UserIcon.png" alt="User's icon">
                 </a>
@@ -75,14 +75,14 @@
 
         <h1 class="pt-2">Buscador</h1>
         <form method="POST" action="home.jsp">
-            <select name="column" class="form-select w-25-perso">
-                <option selected value="0">Seleccione un campo de búsqueda</option>
+            <select name="column" required class="form-select w-25-perso">
+                <option selected disabled value="0">Seleccione un campo de búsqueda</option>
                 <option value="CodEmp">Identificador</option>
                 <option value="NomEmp">Nombre</option>
                 <option value="ApeEmp">Apellido</option>
                 <option value="Cargo">Cargo</option>
             </select>
-            <input type="text" class="my-2 mr-1 w-25-perso" placeholder="Valor del campo" name="value">
+            <input type="text" class="my-2 mr-1 w-25-perso" required placeholder="Valor del campo" name="value">
             <button type="submit" class="btn btn-dark mb-1">BUSCAR</button>
             <a href="home.jsp" class="text-dark">QUITAR FILTROS</a>
         </form> 
