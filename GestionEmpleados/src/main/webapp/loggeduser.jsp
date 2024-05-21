@@ -127,12 +127,12 @@
 
             if (!usernamePattern.test(username)) {
                 valid = false;
-                message += '<p class=\"text-center text-danger m-0 mt-1 p-0\">Formato erroneo</p>';
+                message += '<a class=\"text-center text-danger m-0 mt-1 p-0\" href=\"infocredentials.jsp\"><u>Formato erroneo</u></a>';
             }
 
             if (!passwordPattern.test(password) && valid) {
                 valid = false;
-                message += '<p class=\"text-center text-danger m-0 mt-1 p-0\">Formato erroneo</p>';
+                message += '<a class=\"text-center text-danger m-0 mt-1 p-0\" href=\"infocredentials.jsp\""><u>Formato erroneo</u></a>';
             }
 
             if (valid) {
